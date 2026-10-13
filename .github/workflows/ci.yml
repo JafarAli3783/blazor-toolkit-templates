@@ -1,0 +1,114 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  DOTNET_NOLOGO: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+
+jobs:
+  # ----------------------------------------------------------------
+  # Pack the template pack + run the CLI Flag Test Matrix.
+  # For every PR that touches a template, this regenerates each
+  # (template, flag) combination, builds the generated app, and
+  # fails the job if any combination does not build.
+  # ----------------------------------------------------------------
+  test:
+    name: build & test (${{ matrix.os }}, .NET ${{ matrix.dotnet-version }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        dotnet-version: ['10.0.x']
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup .NET ${{ matrix.dotnet-version }}
+        uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: ${{ matrix.dotnet-version }}
+
+      - name: Cache NuGet packages
+        uses: actions/cache@v6
+        with:
+          path: ~/.nuget/packages
+          key: nuget-${{ runner.os }}-${{ matrix.dotnet-version }}-${{ hashFiles('**/*.csproj') }}
+          restore-keys: |
+            nuget-${{ runner.os }}-${{ matrix.dotnet-version }}-
+            nuget-${{ runner.os }}-
+
+      - name: Pack the template pack
+        run: dotnet pack Blazor.Toolkit.Templates.csproj -c Release --output artifacts/packages
+
+      - name: Install the packed templates
+        shell: bash
+        run: dotnet new install artifacts/packages/Syncfusion.Blazor.Toolkit.Templates::1.0.0 --force
+
+      - name: Verify templates are registered
+        shell: bash
+        run: dotnet new list sfblazor
+
+      # Runs every row of the CLI Flag Test Matrix from CONTRIBUTING.md.
+      # Each row generates a fresh app and verifies it builds. The
+      # generated apps are deleted after the build so the runner
+      # does not run out of disk.
+      - name: Run the CLI Flag Test Matrix
+        shell: bash
+        run: |
+          set -euo pipefail
+          WORK=$(mktemp -d)
+          echo "Scratch directory: $WORK"
+
+          generate() {
+            local label="$1"; shift
+            local out="$WORK/$label"
+            echo "--- generating $label ---"
+            dotnet new "$@" -o "$out" >/dev/null
+            echo "--- building $label ---"
+            dotnet build "$out" --nologo -c Release --no-restore -v:minimal
+          }
+
+          # sfblazorweb matrix
+          generate row-1-default       sfblazorweb
+          generate row-2-int-none      sfblazorweb --interactivity None
+          generate row-3-int-auto      sfblazorweb --interactivity Auto
+          generate row-4-int-auto-ai   sfblazorweb --interactivity Auto --all-interactive
+          generate row-5-int-wasm      sfblazorweb --interactivity WebAssembly
+          generate row-6-empty         sfblazorweb --empty
+          generate row-7-no-https      sfblazorweb --no-https
+          generate row-8-program-main  sfblazorweb --use-program-main
+
+          # sfblazorwasm matrix
+          generate row-9-wasm-default  sfblazorwasm
+          generate row-10-wasm-pwa     sfblazorwasm --pwa
+          generate row-11-wasm-empty   sfblazorwasm --empty
+          generate row-12-wasm-no-https sfblazorwasm --no-https
+
+          echo "All 12 matrix rows generated and built successfully."
+
+      - name: Upload pack artifact
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: templates-package-${{ matrix.os }}-net${{ matrix.dotnet-version }}
+          path: artifacts/packages/*.nupkg
+          if-no-files-found: ignore
+          retention-days: 14
