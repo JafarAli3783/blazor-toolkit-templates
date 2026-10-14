@@ -10,7 +10,8 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+  packages: write
 
 concurrency:
   group: release-${{ github.workflow }}-${{ github.ref }}
@@ -83,19 +84,16 @@ jobs:
           if-no-files-found: error
           retention-days: 30
 
-      - name: Publish to NuGet.org
+      - name: Publish to GitHub Packages
+        # Publishes to this repository's Packages tab
+        # (https://github.com/syncfusion/blazor-toolkit-templates/packages)
+        # so the published package is hosted alongside the repo that owns it.
+        # Authentication uses the workflow's built-in GITHUB_TOKEN; the
+        # `packages: write` permission on this job is sufficient.
         env:
-          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
-        # --skip-duplicate is a safety net for re-runs of the same tag.
-        # If the secret is not configured the step is skipped (workflow
-        # still succeeds, artifact is still available for manual publish).
-        run: |
-          if [ -z "$NUGET_API_KEY" ]; then
-            echo "NUGET_API_KEY secret is not set — skipping NuGet.org publish."
-            echo "The .nupkg is still available as a workflow artifact."
-            exit 0
-          fi
-          dotnet nuget push "artifacts/packages/*.nupkg" \
-            --api-key "$NUGET_API_KEY" \
-            --source https://api.nuget.org/v3/index.json \
-            --skip-duplicate
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NUGET_SOURCE: https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json
+        run: dotnet nuget push "artifacts/packages/*.nupkg" \
+              --source "$NUGET_SOURCE" \
+              --api-key "$GITHUB_TOKEN" \
+              --skip-duplicate

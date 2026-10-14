@@ -3,8 +3,8 @@
 # Syncfusion Blazor Toolkit Templates
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![NuGet](https://img.shields.io/nuget/v/Syncfusion.Blazor.Toolkit.Templates?label=NuGet&logo=nuget)](https://www.nuget.org/packages/Syncfusion.Blazor.Toolkit.Templates)
-[![NuGet Downloads](https://img.shields.io/nuget/dt/Syncfusion.Blazor.Toolkit.Templates?label=downloads&logo=nuget)](https://www.nuget.org/packages/Syncfusion.Blazor.Toolkit.Templates)
+[![Latest Release](https://img.shields.io/github/v/release/syncfusion/blazor-toolkit-templates?label=release&logo=github)](https://github.com/syncfusion/blazor-toolkit-templates/releases)
+[![Package: GitHub Packages](https://img.shields.io/badge/package-GitHub_Packages-181717?logo=github)](https://github.com/syncfusion/blazor-toolkit-templates/packages)
 [![.NET 8](https://img.shields.io/badge/.NET%208%20%7C%20.NET%209%20%7C%20.NET%2010-5C2D91?logo=.net&logoColor=white)](https://dotnet.microsoft.com/en-us/download/dotnet)
 
 Templates for creating Blazor applications using the [Syncfusion Blazor Toolkit](https://www.syncfusion.com/blazor-components). Pre-configured with Syncfusion components, theming, and project structure so you can start building apps immediately.
