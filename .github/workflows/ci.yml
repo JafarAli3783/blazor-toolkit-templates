@@ -56,7 +56,7 @@ jobs:
             nuget-${{ runner.os }}-
 
       - name: Pack the template pack
-        run: dotnet pack Blazor.Toolkit.Templates.csproj -c Release --output artifacts/packages
+        run: dotnet pack src/Blazor.Toolkit.Templates.csproj -c Release --output artifacts/packages
 
       - name: Install the packed templates
         shell: bash

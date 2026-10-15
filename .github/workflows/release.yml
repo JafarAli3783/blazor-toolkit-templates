@@ -62,7 +62,7 @@ jobs:
           echo "Releasing version $VERSION"
 
       - name: Bump <Version> / <PackageVersion>
-        # Keep Blazor.Toolkit.Templates.csproj in sync with the tag so a
+        # Keep src/Blazor.Toolkit.Templates.csproj in sync with the tag so a
         # manual `dotnet pack` against a fresh checkout produces the
         # same nupkg as the one published by this workflow.
         run: |
@@ -70,11 +70,11 @@ jobs:
           sed -i.bak -E \
             "s|<Version>[^<]+</Version>|<Version>${VERSION}</Version>|; \
              s|<PackageVersion>[^<]+</PackageVersion>|<PackageVersion>${VERSION}</PackageVersion>|" \
-            Blazor.Toolkit.Templates.csproj
-          rm -f Blazor.Toolkit.Templates.csproj.bak
+            src/Blazor.Toolkit.Templates.csproj
+          rm -f src/Blazor.Toolkit.Templates.csproj.bak
 
       - name: Pack
-        run: dotnet pack Blazor.Toolkit.Templates.csproj -c Release --output artifacts/packages --no-restore
+        run: dotnet pack src/Blazor.Toolkit.Templates.csproj -c Release --output artifacts/packages --no-restore
 
       - name: Upload .nupkg as workflow artifact
         uses: actions/upload-artifact@v7
