@@ -10,9 +10,9 @@
 
   <ItemGroup>
     <PackageReference Include="Syncfusion.Blazor.Toolkit" Version="1.0.*" />
-	<PackageReference Include="Syncfusion.Blazor.Cards" Version="*" />
-	<!-- optional but recommended for styling -->
-	<PackageReference Include="Syncfusion.Blazor.Themes" Version="*" />
+    <!-- Keep SfCard: commercial Cards package -->
+    <PackageReference Include="Syncfusion.Blazor.Cards" Version="*" />
+    <PackageReference Include="Syncfusion.Blazor.Themes" Version="*" />
   </ItemGroup>
 
   <!--#if (UseWebAssembly) -->
