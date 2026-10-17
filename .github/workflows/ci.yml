@@ -60,7 +60,8 @@ jobs:
 
       - name: Install the packed templates
         shell: bash
-        run: dotnet new install artifacts/packages/Syncfusion.Blazor.Toolkit.Templates::1.0.0 --force
+        run: |
+          dotnet new install artifacts/packages/*.nupkg --force
 
       - name: Verify templates are registered
         shell: bash
