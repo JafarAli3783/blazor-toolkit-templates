@@ -82,12 +82,29 @@ jobs:
             local label="$1"; shift
             local out="$WORK/$label"
             echo "--- generating $label ---"
-            # Create the project (do not hide errors)
             dotnet new "$@" -o "$out" --force
+
             echo "--- building $label ---"
-            # Restore + build (remove --no-restore)
-            dotnet build "$out" --nologo -c Release -v:minimal
-            # Optional cleanup to keep disk usage low
+
+            # Prefer solution file when the template creates one (multi-project cases).
+            # Otherwise fall back to the first .csproj (handles the nested folder).
+            local target
+            target=$(find "$out" -name "*.sln" -type f | head -n 1)
+
+            if [[ -z "$target" ]]; then
+              target=$(find "$out" -name "*.csproj" -type f | head -n 1)
+            fi
+
+            if [[ -z "$target" ]]; then
+              echo "ERROR: No .sln or .csproj found under $out"
+              echo "Directory contents:"
+              find "$out" -type f
+              exit 1
+            fi
+
+            echo "Building: $target"
+            dotnet build "$target" --nologo -c Release -v:minimal
+
             rm -rf "$out"
           }
 
