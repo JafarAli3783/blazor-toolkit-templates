@@ -82,9 +82,13 @@ jobs:
             local label="$1"; shift
             local out="$WORK/$label"
             echo "--- generating $label ---"
-            dotnet new "$@" -o "$out" >/dev/null
+            # Create the project (do not hide errors)
+            dotnet new "$@" -o "$out" --force
             echo "--- building $label ---"
-            dotnet build "$out" --nologo -c Release --no-restore -v:minimal
+            # Restore + build (remove --no-restore)
+            dotnet build "$out" --nologo -c Release -v:minimal
+            # Optional cleanup to keep disk usage low
+            rm -rf "$out"
           }
 
           # sfblazorweb matrix
