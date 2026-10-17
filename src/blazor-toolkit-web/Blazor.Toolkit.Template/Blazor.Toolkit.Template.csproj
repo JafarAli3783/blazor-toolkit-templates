@@ -3,19 +3,21 @@
     <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace Condition="'$(name)' != '$(name{-VALUE-FORMS-}safe_namespace)'">Blazor.Toolkit.Template</RootNamespace>
-    <AssemblyName Condition="'$(name)' != '$(name{-VALUE-FORMS-}safe_namespace)'">Blazor.Toolkit.Template</AssemblyName>
+    <RootNamespace>Blazor.Toolkit.Template</RootNamespace>
+    <AssemblyName>Blazor.Toolkit.Template</AssemblyName>
     <BlazorDisableThrowNavigationException>true</BlazorDisableThrowNavigationException>
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- Required for Syncfusion components -->
-    <PackageReference Include="Syncfusion.Blazor.Toolkit" Version="*" />
+    <PackageReference Include="Syncfusion.Blazor.Toolkit" Version="1.0.*" />
+	<PackageReference Include="Syncfusion.Blazor.Cards" Version="*" />
+	<!-- optional but recommended for styling -->
+	<PackageReference Include="Syncfusion.Blazor.Themes" Version="*" />
   </ItemGroup>
 
   <!--#if (UseWebAssembly) -->
   <ItemGroup>
-    <ProjectReference Include="..\Blazor.Toolkit.Template.Client\Blazor.Toolkit.Template.Client.csproj" Condition="'$(UseWebAssembly)' == 'True'" />
+    <ProjectReference Include="..\Blazor.Toolkit.Template.Client\Blazor.Toolkit.Template.Client.csproj" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="10.0.5" />
   </ItemGroup>
   <!--#endif -->
