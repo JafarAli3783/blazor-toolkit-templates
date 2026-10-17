@@ -7,7 +7,10 @@
 @using Microsoft.AspNetCore.Components.Web.Virtualization
 @using Microsoft.JSInterop
 @using Blazor.Toolkit.Template
-@using Blazor.Toolkit.Template.Client
 @using Blazor.Toolkit.Template.Components
 @using Blazor.Toolkit.Template.Components.Layout
 @using Syncfusion.Blazor.Toolkit
+@* Client project only exists when WebAssembly interactivity is enabled *@
+@*#if (UseWebAssembly)
+@using Blazor.Toolkit.Template.Client
+#endif*@

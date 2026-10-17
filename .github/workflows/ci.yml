@@ -81,30 +81,27 @@ jobs:
           generate() {
             local label="$1"; shift
             local out="$WORK/$label"
+            # Valid C# identifier – required by Microsoft template conventions
+            local name="TestApp"
+
             echo "--- generating $label ---"
-            dotnet new "$@" -o "$out" --force
+            dotnet new "$@" -n "$name" -o "$out" --force
 
             echo "--- building $label ---"
-
-            # Prefer solution file when the template creates one (multi-project cases).
-            # Otherwise fall back to the first .csproj (handles the nested folder).
             local target
-            target=$(find "$out" -name "*.sln" -type f | head -n 1)
-
+            target=$(find "$out" -name "*.sln" -o -name "*.slnx" | head -n 1)
             if [[ -z "$target" ]]; then
               target=$(find "$out" -name "*.csproj" -type f | head -n 1)
             fi
 
             if [[ -z "$target" ]]; then
-              echo "ERROR: No .sln or .csproj found under $out"
-              echo "Directory contents:"
+              echo "ERROR: No .sln/.slnx/.csproj found under $out"
               find "$out" -type f
               exit 1
             fi
 
             echo "Building: $target"
             dotnet build "$target" --nologo -c Release -v:minimal
-
             rm -rf "$out"
           }
 
