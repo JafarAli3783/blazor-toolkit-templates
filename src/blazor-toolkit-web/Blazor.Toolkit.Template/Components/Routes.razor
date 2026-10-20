@@ -1,9 +1,8 @@
-﻿@*#if (UseWebAssembly && InteractivityAtRoot)
+﻿@using Blazor.Toolkit.Template.Components
+@using Blazor.Toolkit.Template.Components.Layout
+@*#if (UseWebAssembly && InteractivityAtRoot)
 @using Blazor.Toolkit.Template.Client
 @using Blazor.Toolkit.Template.Client.Layout
-##else
-@using Blazor.Toolkit.Template.Components
-@using Blazor.Toolkit.Template.Components.Layout
 ##endif*@
 @*#if (UseWebAssembly && !InteractivityAtRoot)
 <Router AppAssembly="typeof(Program).Assembly" AdditionalAssemblies="new[] { typeof(Client._Imports).Assembly }" NotFoundPage="typeof(Pages.NotFound)">
@@ -11,7 +10,7 @@
 <Router AppAssembly="typeof(Program).Assembly" NotFoundPage="typeof(Pages.NotFound)">
 ##endif*@
     <Found Context="routeData">
-        <RouteView RouteData="routeData" DefaultLayout="typeof(Layout.MainLayout)" />
+        <RouteView RouteData="routeData" DefaultLayout="typeof(MainLayout)" />
         <FocusOnNavigate RouteData="routeData" Selector="h1" />
     </Found>
 </Router>
