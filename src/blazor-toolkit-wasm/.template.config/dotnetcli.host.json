@@ -19,7 +19,8 @@
       "isHidden": true
     },
     "Empty": {
-      "isHidden": true
+      "longName": "empty",
+      "shortName": "e"
     },
     "ExcludeLaunchSettings": {
       "isHidden": true
