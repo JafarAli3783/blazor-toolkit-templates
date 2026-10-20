@@ -1,15 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<PackageId>Blazor.Toolkit.Templates</PackageId>
-		<Version>1.0.0</Version>
-		<PackageVersion>1.0.0</PackageVersion>
+		<PackageId>Syncfusion.Blazor.Toolkit.Templates</PackageId>
+		<Version>2.0.0</Version>
+		<PackageVersion>2.0.0</PackageVersion>
 		<Title>Blazor Toolkit Templates</Title>
 		<Company>Syncfusion (scaffold)</Company>
 		<Authors>Syncfusion Team</Authors>
 		<Description>Scaffolded templates for the Blazor Toolkit repository (scaffolded from user request).</Description>
 		<PackageTags>Blazor, Templates, Syncfusion, Toolkit</PackageTags>
-		<RepositoryUrl>https://gitea.syncfusion.com/essential-studio/blazor-toolkit</RepositoryUrl>
+		<RepositoryUrl>https://github.com/syncfusion/blazor-toolkit-templates</RepositoryUrl>
 		<!-- REQUIRED for templates -->
 		<IsPackable>true</IsPackable>
 		<PackageType>Template</PackageType>
