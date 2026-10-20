@@ -8,14 +8,14 @@
 @using Microsoft.JSInterop
 @using Blazor.Toolkit.Template
 @using Blazor.Toolkit.Template.Components
-@*#if ((UseServer && !UseWebAssembly) || !InteractivityAtRoot)
+@*#if ((UseServer && !UseWebAssembly) || !InteractivityAtRoot) -->
 @using Blazor.Toolkit.Template.Components.Layout
-#endif*@
-@*#if (UseWebAssembly)
+##endif*@
+@*#if (UseWebAssembly) -->
 @using Blazor.Toolkit.Template.Client
-#endif*@
-@*#if (UseServer && UseWebAssembly && InteractivityAtRoot)
+##endif*@
+@*#if (UseServer && UseWebAssembly && InteractivityAtRoot) -->
 @using Blazor.Toolkit.Template.Client.Layout
-#endif*@
+##endif*@
 @using Syncfusion.Blazor.Toolkit
 @using Syncfusion.Blazor.Cards
