@@ -7,15 +7,15 @@
 @using Microsoft.AspNetCore.Components.Web.Virtualization
 @using Microsoft.JSInterop
 @using Blazor.Toolkit.Template
+@using Blazor.Toolkit.Template.Components
+@*#if ((UseServer && !UseWebAssembly) || !InteractivityAtRoot)
+@using Blazor.Toolkit.Template.Components.Layout
+#endif*@
 @*#if (UseWebAssembly)
 @using Blazor.Toolkit.Template.Client
 #endif*@
 @*#if (UseServer && UseWebAssembly && InteractivityAtRoot)
 @using Blazor.Toolkit.Template.Client.Layout
-#endif*@
-@using Blazor.Toolkit.Template.Components
-@*#if ((UseServer && !UseWebAssembly) || !InteractivityAtRoot)
-@using Blazor.Toolkit.Template.Components.Layout
 #endif*@
 @using Syncfusion.Blazor.Toolkit
 @using Syncfusion.Blazor.Cards

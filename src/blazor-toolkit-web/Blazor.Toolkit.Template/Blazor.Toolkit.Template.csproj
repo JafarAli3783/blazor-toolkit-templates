@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Syncfusion.Blazor.Toolkit" Version="1.0.*" />
+    <PackageReference Include="Syncfusion.Blazor.Toolkit" Version="2.0.*" />
     <!-- Keep SfCard: commercial Cards package -->
     <PackageReference Include="Syncfusion.Blazor.Cards" Version="*" />
     <PackageReference Include="Syncfusion.Blazor.Themes" Version="*" />
