@@ -7,16 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Syncfusion.Blazor.Toolkit" Version="2.0.*" />
-    <!-- Keep SfCard: commercial Cards package -->
-    <PackageReference Include="Syncfusion.Blazor.Cards" Version="*" />
-    <PackageReference Include="Syncfusion.Blazor.Themes" Version="*" />
+    <PackageReference Include="Syncfusion.Blazor.Toolkit" Version="2.0.1" />
   </ItemGroup>
 
   <!--#if (UseWebAssembly) -->
   <ItemGroup>
     <ProjectReference Include="..\Blazor.Toolkit.Template.Client\Blazor.Toolkit.Template.Client.csproj" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="10.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="10.0.*" />
   </ItemGroup>
   <!--#endif -->
 </Project>
