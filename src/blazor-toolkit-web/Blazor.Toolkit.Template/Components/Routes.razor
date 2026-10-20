@@ -1,4 +1,11 @@
-﻿@*#if (UseWebAssembly && !InteractivityAtRoot)
+﻿@*#if (UseWebAssembly && InteractivityAtRoot)
+@using Blazor.Toolkit.Template.Client
+@using Blazor.Toolkit.Template.Client.Layout
+##else
+@using Blazor.Toolkit.Template.Components
+@using Blazor.Toolkit.Template.Components.Layout
+##endif*@
+@*#if (UseWebAssembly && !InteractivityAtRoot)
 <Router AppAssembly="typeof(Program).Assembly" AdditionalAssemblies="new[] { typeof(Client._Imports).Assembly }" NotFoundPage="typeof(Pages.NotFound)">
 ##else
 <Router AppAssembly="typeof(Program).Assembly" NotFoundPage="typeof(Pages.NotFound)">
