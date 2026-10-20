@@ -25,11 +25,11 @@
   "preferNameDirectory": true,
   "primaryOutputs": [
     {
-      "path": "BlazorWebAssembly-Template.csproj"
+      "path": "BlazorWebAssemblyTemplate.csproj"
     }
   ],
   "shortName": "sfblazorwasm",
-  "sourceName": "BlazorWebAssembly-Template",
+  "sourceName": "BlazorWebAssemblyTemplate",
   "symbols": {
     "Framework": {
       "type": "parameter",
