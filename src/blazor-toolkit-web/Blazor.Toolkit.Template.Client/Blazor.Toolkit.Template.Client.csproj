@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="10.0.5" />
-    <PackageReference Include="Syncfusion.Blazor.Toolkit" Version="1.0.*" />
+    <PackageReference Include="Syncfusion.Blazor.Toolkit" Version="2.0.*" />
     <PackageReference Include="Syncfusion.Blazor.Cards" Version="*" />
     <PackageReference Include="Syncfusion.Blazor.Themes" Version="*" />
   </ItemGroup>
