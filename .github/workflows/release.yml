@@ -74,7 +74,7 @@ jobs:
           rm -f src/Blazor.Toolkit.Templates.csproj.bak
 
       - name: Pack
-        run: dotnet pack src/Blazor.Toolkit.Templates.csproj -c Release --output artifacts/packages --no-restore
+        run: dotnet pack src/Blazor.Toolkit.Templates.csproj -c Release --output artifacts/packages
 
       - name: Verify signing secrets exist
         run: |
