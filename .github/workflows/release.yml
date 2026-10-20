@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   packages: write
 
 concurrency:
@@ -138,3 +138,12 @@ jobs:
               --source "$NUGET_SOURCE" \
               --api-key "$GITHUB_TOKEN" \
               --skip-duplicate
+
+      - name: Upload nupkg to GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ steps.version.outputs.version }}
+          files: artifacts/packages/*.nupkg
+          fail_on_unmatched_files: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
