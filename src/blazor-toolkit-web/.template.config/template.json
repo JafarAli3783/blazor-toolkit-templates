@@ -309,7 +309,7 @@
     },
     "HasHttpProfile": {
       "type": "computed",
-      "value": "(!NoHttps)"
+      "value": "true"
     },
     "HasHttpsProfile": {
       "type": "computed",

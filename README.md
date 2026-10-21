@@ -120,6 +120,10 @@ dotnet new sfblazorweb -o MyApp --no-https
 dotnet new sfblazorwasm -o MyApp --no-https
 ```
 
+The `--no-https` option removes the HTTPS launch profile while keeping the HTTP
+profile, so the app still runs in the Development environment with its static
+web assets available.
+
 Create an app using explicit `Program.Main`:
 
 ```bash

@@ -38,8 +38,10 @@ if (!app.Environment.IsDevelopment())
 #endif
 {
     app.UseExceptionHandler("/Error", createScopeForErrors: true);
+#if (HasHttpsProfile)
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
+#endif
 }
 
 app.UseStatusCodePagesWithReExecute("/not-found", createScopeForStatusCodePages: true);
@@ -54,16 +56,19 @@ app.MapStaticAssets();
 #if (UseServer && UseWebAssembly)
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode()
-    .AddInteractiveWebAssemblyRenderMode();
+    .AddInteractiveWebAssemblyRenderMode()
 #elif (UseServer)
 app.MapRazorComponents<App>()
-    .AddInteractiveServerRenderMode();
+    .AddInteractiveServerRenderMode()
 #elif (UseWebAssembly)
 app.MapRazorComponents<App>()
     .AddInteractiveWebAssemblyRenderMode()
-    .AddAdditionalAssemblies(typeof(Blazor.Toolkit.Template.Client._Imports).Assembly);
 #else
-app.MapRazorComponents<App>();
+app.MapRazorComponents<App>()
 #endif
+#if (UseWebAssembly)
+    .AddAdditionalAssemblies(typeof(Blazor.Toolkit.Template.Client._Imports).Assembly);
+#endif
+;
 
 app.Run();
