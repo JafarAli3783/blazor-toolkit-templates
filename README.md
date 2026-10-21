@@ -7,7 +7,7 @@
 [![Package: GitHub Packages](https://img.shields.io/badge/package-GitHub_Packages-181717?logo=github)](https://github.com/syncfusion/blazor-toolkit-templates/packages)
 [![.NET 8](https://img.shields.io/badge/.NET%208%20%7C%20.NET%209%20%7C%20.NET%2010-5C2D91?logo=.net&logoColor=white)](https://dotnet.microsoft.com/en-us/download/dotnet)
 
-Templates for creating Blazor applications using the [Syncfusion Blazor Toolkit](https://www.syncfusion.com/blazor-components). Pre-configured with Syncfusion components, theming, and project structure so you can start building apps immediately.
+Templates for creating Blazor applications using the [Syncfusion Blazor Toolkit](https://blazor.syncfusion.com/demos/toolkit/). Pre-configured with Syncfusion components, theming, and project structure so you can start building apps immediately.
 
 ## Prerequisites
 

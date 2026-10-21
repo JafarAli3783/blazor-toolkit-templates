@@ -48,7 +48,7 @@ All violations must be reported to: **legal@syncfusion.com**
 | **3. Temporary Ban** | Serious single violation, or persistent pattern after a Warning. | No public interaction with the project for a specified period. |
 | **4. Permanent Ban** | Pattern of serious violations, harassment, or aggression toward a class of individuals. | Permanent removal from all project spaces. |
 
-The level chosen is proportional to the violation. Repeated **License circumvention** (§3) is treated as at least a Level 3 violation, since it is a commercial risk to Syncfusion and to the template users who rely on a valid license.
+The level chosen is proportional to the violation. Repeated **License circumvention** is treated as at least a Level 3 violation, since it is a commercial risk to Syncfusion and to the template users who rely on a valid license.
 
 ## 7. Attribution
 
