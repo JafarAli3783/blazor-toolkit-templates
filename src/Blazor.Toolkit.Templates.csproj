@@ -10,6 +10,9 @@
 		<Description>Scaffolded templates for the Blazor Toolkit repository (scaffolded from user request).</Description>
 		<PackageTags>Blazor, Templates, Syncfusion, Toolkit</PackageTags>
 		<RepositoryUrl>https://github.com/syncfusion/blazor-toolkit-templates</RepositoryUrl>
+		<PackageIcon>syncfusion_logo.png</PackageIcon>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
 		<!-- REQUIRED for templates -->
 		<IsPackable>true</IsPackable>
 		<PackageType>Template</PackageType>
@@ -28,7 +31,7 @@
 	<ItemGroup>
 		<!-- Pack template files ONLY (not projects) -->
 		<Content Include="**/*"
-					 Exclude="**/bin/**;**/obj/**;**/.vs/**"
+					 Exclude="**/bin/**;**/obj/**;**/.vs/**;**/LICENSE;**/LICENSE.txt;syncfusion_logo.png"
 					 Pack="true"
 					 PackagePath="/" />
 		<Content Include="blazor-toolkit-web/**"
@@ -39,6 +42,10 @@
 				 Exclude="**/bin/**;**/obj/**;**/.vs/**;**/*.user"
 				 Pack="true"
 				 PackagePath="/" />
-		<Compile Remove="**\\*" />
+		<Compile Remove="**\*" />
+
+		<None Include="LICENSE.txt" Pack="true" PackagePath="LICENSE.txt" />
+		<None Include="..\README.md" Pack="true" PackagePath="README.md" />
+		<None Include="syncfusion_logo.png" Pack="true" PackagePath="syncfusion_logo.png" />
 	</ItemGroup>
 </Project>
