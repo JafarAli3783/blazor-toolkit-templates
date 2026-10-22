@@ -197,7 +197,6 @@
             "Pages/Weather.*",
             "Layout/MainLayout.razor.css",
             "Layout/NavMenu.*",
-            "wwwroot/lib/**",
             "wwwroot/favicon.png",
             "wwwroot/sample-data/weather.json"
           ]

@@ -93,7 +93,8 @@
             "Blazor.Toolkit.Template/Components/Pages/Counter.razor",
             "Blazor.Toolkit.Template/Components/Pages/Weather.razor",
             "Blazor.Toolkit.Template/Components/Layout/NavMenu.razor",
-            "Blazor.Toolkit.Template/Components/Layout/NavMenu.razor.css"
+            "Blazor.Toolkit.Template/Components/Layout/NavMenu.razor.css",
+            "Blazor.Toolkit.Template/Components/Layout/MainLayout.razor.css"
           ]
         },
         {

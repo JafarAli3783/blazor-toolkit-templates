@@ -1,8 +1,10 @@
 ﻿@page "/"
-@using Syncfusion.Blazor.Toolkit
-@using Microsoft.AspNetCore.Components.Web
 
 <PageTitle>Home</PageTitle>
+
+@*#if (SampleContent)
+@using Syncfusion.Blazor.Toolkit
+@using Microsoft.AspNetCore.Components.Web
 
 <div class="container py-4">
     <div class="card mb-4">
@@ -111,3 +113,8 @@
     private int? Rating { get; set; } = 3;
     private string Message { get; set; } = string.Empty;
 }
+
+##else
+<h1>Hello, world!</h1>
+<p>Welcome to your new Syncfusion Blazor Toolkit app.</p>
+##endif*@
